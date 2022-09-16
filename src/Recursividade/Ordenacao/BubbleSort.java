@@ -8,7 +8,7 @@ public class BubbleSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet);
 
-        bubbleSort(vet);
+        bubble(vet);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -19,7 +19,7 @@ public class BubbleSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet3);
 
-        bubbleSort(vet3);
+        bubble(vet3);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -27,7 +27,7 @@ public class BubbleSort {
 
     }
 
-    static void bubbleSort(int vet[]) {
+    static void bubble(int vet[]) {
 
         int tamanhoVetor = vet.length;
         for (int i = 0; i < tamanhoVetor; i++) {

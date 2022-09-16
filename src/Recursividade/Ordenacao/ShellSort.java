@@ -1,6 +1,6 @@
 package Recursividade.Ordenacao;
 
-public class InsertionSort {
+public class ShellSort {
 
     public static void main(String[] args) {
         int vet[] = new int[] {5, 1, 6, 7, 2, 4, 10, 35, 15};
@@ -11,7 +11,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet);
 
-        insertion(vet);
+        shell(vet);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -22,7 +22,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet2);
 
-        insertion(vet2);
+        shell(vet2);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -33,7 +33,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet3);
 
-        insertion(vet3);
+        shell(vet3);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -44,27 +44,37 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet4);
 
-        insertion(vet4);
+        shell(vet4);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
         exibirVetor(vet4);
     }
 
-    static void insertion(int vet[]) {
-        int j, aux;
-        for (int i = 0; i < vet.length; i++) {
-            j = i;
-            while (j > 0 && vet[j - 1] > vet[j]) {
-                aux = vet[j];
-                vet[j] = vet[j - 1];
-                vet[j - 1] = aux;
-                j--;
+    static void shell(int vet[]) {
+        int i, j, aux;
+        int  size = vet.length;
+        int  h = 1;
+
+        while (h < size)
+            h = 3 * h + 1;
+
+        while (h > 1) {
+            h /= 3;
+
+            for (i = h; i < size; i++) {
+                aux = vet[i];
+                j = i - h;
+                while (j >= 0 && aux < vet[j]) {
+                    vet[j + h] = vet[j];
+                    j -= h;
+                }
+                vet[j + h] = aux;
             }
         }
     }
 
-    static void exibirVetor(int vet[]) {
+    static void exibirVetor(int[] vet) {
         for (int i = 0; i < vet.length; i++) {
             System.out.print(vet[i] + ", ");
         }

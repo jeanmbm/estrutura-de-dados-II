@@ -8,7 +8,7 @@ public class SelectionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet);
 
-        selectionSort(vet);
+        selection(vet);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -19,7 +19,7 @@ public class SelectionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet3);
 
-        selectionSort(vet3);
+        selection(vet3);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -49,7 +49,7 @@ public class SelectionSort {
 //        }
 //    }
 
-    static void selectionSort(int vet[]) {
+    static void selection(int vet[]) {
         int tamanhoVetor = vet.length;
         int aux = 0;
 
