@@ -1,4 +1,4 @@
-package Recursividade.Ordenacao;
+package Ordenacao;
 
 public class SelectionSort {
     public static void main(String[] args) {

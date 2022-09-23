@@ -1,4 +1,4 @@
-package Recursividade.Ordenacao;
+package Ordenacao;
 
 public class ShellSort {
 
@@ -11,7 +11,7 @@ public class ShellSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet);
 
-        shell(vet);
+        shell2(vet);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -72,6 +72,25 @@ public class ShellSort {
                 vet[j + h] = aux;
             }
         }
+    }
+
+    static void shell2(int[] vet) {
+
+        for (int i = vet.length / 2; i > 0 ; i = i / 2) {
+            for (int j = i; j < vet.length; j++) {
+                for (int k = j - i; k >= 0 ; k = k - 1) {
+                    if (vet[k+1] >= vet[k])
+                        break;
+                    else {
+                        int aux = vet[k];
+                        vet[k] = vet[k + 1];
+                        vet[k + 1] = aux;
+                    }
+                }
+                
+            }
+        }
+
     }
 
     static void exibirVetor(int[] vet) {

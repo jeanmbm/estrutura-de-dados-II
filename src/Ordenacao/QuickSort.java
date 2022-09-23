@@ -1,4 +1,4 @@
-package Recursividade.Ordenacao;
+package Ordenacao;
 
 public class QuickSort {
 

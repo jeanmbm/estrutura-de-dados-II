@@ -1,6 +1,6 @@
-package Recursividade.Ordenacao;
+package Ordenacao;
 
-public class InsertionSort {
+public class MergeSort {
 
     public static void main(String[] args) {
         int vet[] = new int[] {5, 1, 6, 7, 2, 4, 10, 35, 15};
@@ -11,7 +11,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet);
 
-        insertion(vet);
+        sort(vet, 0, vet.length - 1);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -22,7 +22,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet2);
 
-        insertion(vet2);
+        sort(vet2, 0, vet2.length -1);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -33,7 +33,7 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet3);
 
-        insertion(vet3);
+        sort(vet3, 0, vet3.length -1);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
@@ -44,29 +44,59 @@ public class InsertionSort {
         System.out.print("Vetor antes da ordenação: ");
         exibirVetor(vet4);
 
-        insertion(vet4);
+        sort(vet4, 0, vet4.length - 1);
         System.out.println("");
 
         System.out.print("Vetor depois da ordenação: ");
         exibirVetor(vet4);
+
     }
 
-    static void insertion(int vet[]) {
-        int j, aux;
-        for (int i = 0; i < vet.length; i++) {
-            j = i;
-            while (j > 0 && vet[j - 1] > vet[j]) {
-                aux = vet[j];
-                vet[j] = vet[j - 1];
-                vet[j - 1] = aux;
-                j--;
-            }
+    static void merge(int vetor[], int inicio, int meio, int fim)
+    {
+        int quantidadeVet1 = meio- inicio+ 1;
+        int quantidadeVet2 = fim -meio;
+        int i = 0, j = 0;
+        int k = inicio;
+
+        int aux1[] = new int [quantidadeVet1];
+        int aux2[] = new int [quantidadeVet2];
+
+        for (int l = 0; l < quantidadeVet1; l++)
+            aux1[l] = vetor[inicio + l];
+
+        for (int l = 0; l < quantidadeVet2; l++)
+            aux2[l] = vetor[meio + 1+ l];
+
+        while (i < quantidadeVet1 && j < quantidadeVet2)
+        {
+            if (aux1[i] <= aux2[j])
+                vetor[k++] = aux1[i++];
+            else
+                vetor[k++] = aux2[j++];
+        }
+
+        while (i < quantidadeVet1)
+            vetor[k++] = aux1[i++];
+
+        while (j < quantidadeVet2)
+            vetor[k++] = aux2[j++];
+
+    }
+    static void sort(int vetor[], int inicio, int fim)
+    {
+        if (inicio < fim)
+        {
+            int meio = ( inicio + fim ) / 2;
+            sort(vetor, inicio, meio);
+            sort(vetor , meio + 1, fim);
+            merge(vetor, inicio, meio, fim);
         }
     }
-
-    static void exibirVetor(int vet[]) {
+    static void exibirVetor(int[] vet) {
         for (int i = 0; i < vet.length; i++) {
             System.out.print(vet[i] + ", ");
         }
     }
+
 }
