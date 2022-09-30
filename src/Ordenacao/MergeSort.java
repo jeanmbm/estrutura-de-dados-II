@@ -139,7 +139,7 @@ static void merge(int[] vetor, int inicio, int meio, int fim) {
     }
     
     while (i < quantidadeVet1) {
-        vetor[k++] = aux1[i];
+        vetor[k] = aux1[i];
         i++;
         k++;
     }
