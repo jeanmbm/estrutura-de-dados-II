@@ -51,45 +51,46 @@ public class MergeSort {
         exibirVetor(vet4);
 
     }
+    
+    static void merge(int[] vetor, int inicio, int meio, int fim) {
+        int quantidadeVet1 = meio- inicio+ 1;
+        int quantidadeVet2 = fim -meio;
+        int i = 0, j = 0;
+        int k = inicio;
 
-    static void merge(int vetor[], int inicio, int meio, int fim)
-    {
-        
-        int[] aux = new int[vetor.length];
-        for (int i = inicio; i <= fim; i++) {
-            aux[i] = vetor[i];
-        }
-        
-        int i = inicio;
-        int j = meio + 1;
-        int k = fim;
-        
-         while (i <= meio && j <= fim) {    
-            if (aux[i] <= aux[j]) {
-                vetor[k] = aux[i];
+        int[] aux1 = new int [quantidadeVet1];
+        int[] aux2 = new int [quantidadeVet2];
+
+        for (int l = 0; l < quantidadeVet1; l++)
+            aux1[l] = vetor[inicio + l];
+
+        for (int l = 0; l < quantidadeVet2; l++)
+            aux2[l] = vetor[meio + 1+ l];
+
+        while (i < quantidadeVet1 && j < quantidadeVet2) {
+            if (aux1[i] <= aux2[j]) {
+                vetor[k] = aux1[i];
                 i++;
             } else {
-                vetor[k] = aux[j];
+                vetor[k] = aux2[j];
                 j++;
             }
-            k++;  
-        }
-
-        while (i <= meio) {
-            vetor[k] = aux[i];
             k++;
-            i++;
         }
-
-        while (j <= fim) {
-            vetor[k] = aux[j];
+        
+        while (i < quantidadeVet1) {
+            vetor[k] = aux1[i];
+            i++;
+            k++;
+        }
+    
+        while (j < quantidadeVet2) {
+            vetor[k] = aux2[j];
             k++;
             j++;
         }
-
-    }
-    
-    
+    }  
+     
     static void sort(int vetor[], int inicio, int fim)
     {
         if (inicio < fim)
@@ -112,41 +113,39 @@ public class MergeSort {
 }
 
 
-static void merge(int[] vetor, int inicio, int meio, int fim) {
-    int quantidadeVet1 = meio- inicio+ 1;
-    int quantidadeVet2 = fim -meio;
-    int i = 0, j = 0;
-    int k = inicio;
-
-    int[] aux1 = new int [quantidadeVet1];
-    int[] aux2 = new int [quantidadeVet2];
-
-    for (int l = 0; l < quantidadeVet1; l++)
-        aux1[l] = vetor[inicio + l];
-
-    for (int l = 0; l < quantidadeVet2; l++)
-        aux2[l] = vetor[meio + 1+ l];
-
-    while (i < quantidadeVet1 && j < quantidadeVet2) {
-        if (aux1[i] <= aux2[j]) {
-            vetor[k] = aux1[i];
-            i++;
-        } else {
-            vetor[k] = aux2[j];
-            j++;
-        }
-        k++;
-    }
-    
-    while (i < quantidadeVet1) {
-        vetor[k] = aux1[i];
-        i++;
-        k++;
-    }
-
-    while (j < quantidadeVet2) {
-        vetor[k] = aux2[j];
-        k++;
-        j++;
-    }
-}
+// static void merge(int vetor[], int inicio, int meio, int fim)
+//    {
+//        
+//        int[] aux = new int[vetor.length];
+//        for (int i = inicio; i <= fim; i++) {
+//            aux[i] = vetor[i];
+//        }
+//        
+//        int i = inicio;
+//        int j = meio + 1;
+//        int k = fim;
+//        
+//         while (i <= meio && j <= fim) {    
+//            if (aux[i] <= aux[j]) {
+//                vetor[k] = aux[i];
+//                i++;
+//            } else {
+//                vetor[k] = aux[j];
+//                j++;
+//            }
+//            k++;  
+//        }
+//
+//        while (i <= meio) {
+//            vetor[k] = aux[i];
+//            k++;
+//            i++;
+//        }
+//
+//        while (j <= fim) {
+//            vetor[k] = aux[j];
+//            k++;
+//            j++;
+//        }
+//
+//    }
