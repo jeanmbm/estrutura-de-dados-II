@@ -68,21 +68,33 @@ public class MergeSort {
         for (int l = 0; l < quantidadeVet2; l++)
             aux2[l] = vetor[meio + 1+ l];
 
-        while (i < quantidadeVet1 && j < quantidadeVet2)
-        {
-            if (aux1[i] <= aux2[j])
-                vetor[k++] = aux1[i++];
-            else
-                vetor[k++] = aux2[j++];
+        while (i < quantidadeVet1 && j < quantidadeVet2) {
+            if (aux1[i] <= aux2[j]) {
+                vetor[k] = aux1[i];
+                k++;
+                i++;
+            } else {
+                vetor[k] = aux2[j];
+                k++;
+                j++;
+            }
         }
 
-        while (i < quantidadeVet1)
-            vetor[k++] = aux1[i++];
+        while (i < quantidadeVet1) {
+            vetor[k] = aux1[i];
+            k++;
+            i++;
+        }
 
-        while (j < quantidadeVet2)
+        while (j < quantidadeVet2) {
             vetor[k++] = aux2[j++];
+            k++;
+            j++;
+        }
 
     }
+    
+    
     static void sort(int vetor[], int inicio, int fim)
     {
         if (inicio < fim)
